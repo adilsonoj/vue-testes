@@ -82,7 +82,7 @@
 
     <div class="dashboard-content">
       <div class="container-logo">
-        <img :src="require('@/assets/logo.webp')" class="logo-background" />
+        <!-- <img :src="require('@/assets/logo.webp')" class="logo-background" /> -->
       </div>
     </div>
   </div>
@@ -142,7 +142,8 @@ export default {
 
 <style scoped>
 .card {
-  max-width: 80px;
+  max-width: 100px;
+  min-width: 80px;
   overflow-y: scroll;
 }
 .logo {

@@ -1,40 +1,85 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/about',
-    name: 'About',
+    path: "/about",
+    name: "About",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: () => import(/* webpackChunkName: "dashboard" */ '../pages/Dashboard/Dashboard.vue')
+    path: "/dashboard",
+    name: "Dashboard",
+    component: () =>
+      import(
+        /* webpackChunkName: "dashboard" */ "../pages/Dashboard/Dashboard.vue"
+      ),
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../pages/Login/Login.vue')
-  }
-]
+    path: "/dashboardLayout",
+    name: "DashboardLayout",
+    component: () =>
+      import(
+        /* webpackChunkName: "dashboardLayout" */ "../pages/Dashboard/DashboardLayout.vue"
+      ),
+  },
+  {
+    path: "/dashboardNew",
+    name: "DashboardNew",
+    component: () =>
+      import(
+        /* webpackChunkName: "dashboardNew" */ "../pages/Dashboard/DashboardNew.vue"
+      ),
+    children: [
+      {
+        path: "",
+        components: {
+          "dashboard-paciente": () =>
+            import(
+              /* webpackChunkName: "" */ "../pages/Dashboard/DashboardHome.vue"
+            ),
+        },
+      },
+
+      {
+        path: "home",
+        name: "Home",
+        components: {
+          "dashboard-paciente": Home,
+        },
+      },
+    ],
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../pages/Login/Login.vue"),
+  },
+  // {
+  //   path: "/login",
+  //   name: "Login",
+  //   components: () =>
+  //     import(/* webpackChunkName: "login" */ "../pages/Login/Login.vue"),
+  // },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
+});
 
-})
-
-export default router
+export default router;
