@@ -1,15 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-
+import Notificacao from "../pages/Notificacao/NotificacaoPaciente.vue"
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
+const routes = [{
+  path: "/",
+  name: "Home",
+  component: Home,
+},
   {
     path: "/about",
     name: "About",
@@ -17,41 +16,40 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
     path: "/dashboard",
     name: "Dashboard",
     component: () =>
-      import(
-        /* webpackChunkName: "dashboard" */ "../pages/Dashboard/Dashboard.vue"
-      ),
+    import(
+      /* webpackChunkName: "dashboard" */ "../pages/Dashboard/Dashboard.vue"
+    ),
   },
   {
     path: "/dashboardLayout",
     name: "DashboardLayout",
     component: () =>
-      import(
-        /* webpackChunkName: "dashboardLayout" */ "../pages/Dashboard/DashboardLayout.vue"
-      ),
+    import(
+      /* webpackChunkName: "dashboardLayout" */ "../pages/Dashboard/DashboardLayout.vue"
+    ),
   },
   {
     path: "/dashboardNew",
     name: "DashboardNew",
     component: () =>
-      import(
-        /* webpackChunkName: "dashboardNew" */ "../pages/Dashboard/DashboardNew.vue"
-      ),
-    children: [
-      {
-        path: "",
-        components: {
-          "dashboard-paciente": () =>
-            import(
-              /* webpackChunkName: "" */ "../pages/Dashboard/DashboardHome.vue"
-            ),
-        },
+    import(
+      /* webpackChunkName: "dashboardNew" */ "../pages/Dashboard/DashboardNew.vue"
+    ),
+    children: [{
+      path: "",
+      components: {
+        "dashboard-paciente": () =>
+        import(
+          /* webpackChunkName: "" */ "../pages/Dashboard/DashboardHome.vue"
+        ),
       },
+    },
 
       {
         path: "home",
@@ -60,13 +58,20 @@ const routes = [
           "dashboard-paciente": Home,
         },
       },
+      {
+        path: "notificacaopaciente",
+        name: "NotificacaoPaciente",
+        components: {
+          "dashboard-paciente": Notificacao,
+        },
+      },
     ],
   },
   {
     path: "/login",
     name: "Login",
     component: () =>
-      import(/* webpackChunkName: "login" */ "../pages/Login/Login.vue"),
+    import(/* webpackChunkName: "login" */ "../pages/Login/Login.vue"),
   },
   // {
   //   path: "/login",

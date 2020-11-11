@@ -12,7 +12,7 @@
       mini-variant-width="56"
       :permanent="!mini"
       app
-    >
+      >
       <v-list-item class="px-2" style="justify-content: center;">
         <v-list-item-avatar>
           <v-img src="../../assets/apple-touch-icon.png"></v-img>
@@ -26,7 +26,7 @@
             :close-on-content-click="false"
             :nudge-width="100"
             offset-x
-          >
+            >
             <template v-slot:activator="{ on, attrs }">
               <div v-bind="attrs" v-on="on" @click="action(conta)">
                 <v-list-item link exact>
@@ -36,7 +36,7 @@
                   <v-list-item-content>
                     <v-list-item-title class="text">{{
                       conta.title
-                    }}</v-list-item-title>
+                      }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </div>
@@ -73,14 +73,14 @@
             :key="item.title"
             link
             :to="item.url"
-          >
+            >
             <v-list-item-action>
               <v-icon class="text">{{ item.icon }}</v-icon>
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title class="text">{{
                 item.title
-              }}</v-list-item-title>
+                }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
@@ -102,71 +102,96 @@
 </template>
 
 <script>
-import {
-  mdiAccountBox,
-  mdiBell,
-  mdiClipboardText,
-  mdiMedicalBag,
-  mdiClipboardPlus,
-  mdiChatPlus,
-  mdiFilePlus,
-  mdiHistory,
-  mdiCalendarMonth,
-  mdiMenu,
-} from "@mdi/js";
+  import {
+    mdiAccountBox,
+    mdiBell,
+    mdiClipboardText,
+    mdiMedicalBag,
+    mdiClipboardPlus,
+    mdiChatPlus,
+    mdiFilePlus,
+    mdiHistory,
+    mdiCalendarMonth,
+    mdiMenu,
+  } from "@mdi/js";
 
-export default {
-  data() {
-    return {
-      items: [
-        {
+  export default {
+    data() {
+      return {
+        items: [{
           title: "Minha Ficha",
           icon: mdiClipboardText,
           url: "/dashboardNew/home",
         },
-        { title: "Notificações", icon: mdiBell },
-        { title: "Plano de Tratamento", icon: mdiMedicalBag },
-        { title: "Meus Exames", icon: mdiClipboardPlus },
-        { title: "Histórico", icon: mdiHistory },
-        { title: "Impressao diagnóstica", icon: mdiChatPlus },
-        { title: "Minhas receitas", icon: mdiFilePlus },
-        { title: "Agenda", icon: mdiCalendarMonth },
-      ],
-      conta: {
-        title: "Conta",
-        icon: mdiAccountBox,
-        url: "/dashboardNew",
-        items: [
-          { title: "Minha Conta", url: "" },
-          { title: "Notificações", url: "" },
-          { title: "Alterar Senha", url: "" },
+          {
+            title: "Notificações",
+            icon: mdiBell,
+            url: "/dashboardNew/notificacaopaciente"
+          },
+          {
+            title: "Plano de Tratamento",
+            icon: mdiMedicalBag
+          },
+          {
+            title: "Meus Exames",
+            icon: mdiClipboardPlus
+          },
+          {
+            title: "Histórico",
+            icon: mdiHistory
+          },
+          {
+            title: "Impressao diagnóstica",
+            icon: mdiChatPlus
+          },
+          {
+            title: "Minhas receitas",
+            icon: mdiFilePlus
+          },
+          {
+            title: "Agenda",
+            icon: mdiCalendarMonth
+          },
         ],
+        conta: {
+          title: "Conta",
+          icon: mdiAccountBox,
+          url: "/dashboardNew",
+          items: [{
+            title: "Minha Conta",
+            url: ""
+          },
+            {
+              title: "Alterar Senha",
+              url: ""
+            },
+          ],
+        },
+        menu: false,
+        selectedItem: undefined,
+        drawer: false,
+        menuIcon: mdiMenu,
+      };
+    },
+    methods: {
+      action(item) {
+        this.isActive = item.title;
       },
-      menu: false,
-      selectedItem: undefined,
-      drawer: false,
-      menuIcon: mdiMenu,
-    };
-  },
-  methods: {
-    action(item) {
-      this.isActive = item.title;
     },
-  },
-  computed: {
-    mini() {
-      return this.$vuetify.breakpoint.mdAndDown;
+    computed: {
+      mini() {
+        return this.$vuetify.breakpoint.mdAndDown;
+      },
     },
-  },
-};
-</script>
+  };
+  </script>
 
-<style scoped>
-.active {
-  background-color: white;
-  color: rgb(85, 85, 85);
-}
-.text {
-  color: white;
-}
-</style>
+  <style scoped>
+    .active {
+      background-color: white;
+      color: rgb(85, 85, 85);
+    }
+    .text {
+      color: white;
+    }
+  </style>
