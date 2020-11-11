@@ -1,15 +1,17 @@
 <template>
   <v-app>
-    <!-- <v-app-bar app color="primary" dark>
-      ..
-    </v-app-bar> -->
+    <v-app-bar v-if="mini" app color="#385F73" dark>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"
+        ><v-icon class="text">{{ menuIcon }}</v-icon></v-app-bar-nav-icon
+      >
+    </v-app-bar>
     <v-navigation-drawer
+      v-model="drawer"
       color="#385F73"
       :mini-variant.sync="mini"
       mini-variant-width="56"
-      permanent
+      :permanent="!mini"
       app
-      floating
     >
       <v-list-item class="px-2" style="justify-content: center;">
         <v-list-item-avatar>
@@ -27,7 +29,7 @@
           >
             <template v-slot:activator="{ on, attrs }">
               <div v-bind="attrs" v-on="on" @click="action(conta)">
-                <v-list-item link exact :to="conta.url">
+                <v-list-item link exact>
                   <v-list-item-action>
                     <v-icon class="text">{{ conta.icon }}</v-icon>
                   </v-list-item-action>
@@ -110,6 +112,7 @@ import {
   mdiFilePlus,
   mdiHistory,
   mdiCalendarMonth,
+  mdiMenu,
 } from "@mdi/js";
 
 export default {
@@ -141,6 +144,8 @@ export default {
       },
       menu: false,
       selectedItem: undefined,
+      drawer: false,
+      menuIcon: mdiMenu,
     };
   },
   methods: {
