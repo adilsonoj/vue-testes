@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar v-if="mini" app color="#385F73" dark>
+    <v-app-bar v-if="mobile" app color="#385F73" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"
         ><v-icon class="text">{{ menuIcon }}</v-icon></v-app-bar-nav-icon
       >
@@ -8,15 +8,34 @@
     <v-navigation-drawer
       v-model="drawer"
       color="#385F73"
-      :mini-variant.sync="mini"
+      :mini-variant="!mini"
       mini-variant-width="56"
-      :permanent="!mini"
+
+      :permanent="!mobile"
       app
+      absolute
       >
-      <v-list-item class="px-2" style="justify-content: center;">
+      <v-list-item class="px-2" v-if="!mini">
+        <v-btn
+          icon
+          @click.stop="mini = !mini"
+          >
+          <v-icon>{{ mdiChevronRight }}</v-icon>
+        </v-btn>
+      </v-list-item>
+
+      <v-list-item class="px-2">
         <v-list-item-avatar>
           <v-img src="../../assets/apple-touch-icon.png"></v-img>
         </v-list-item-avatar>
+
+        <v-list-item-title>John Leider</v-list-item-title>
+        <v-btn
+          icon
+          @click.stop="mini = !mini"
+          >
+          <v-icon>{{ mdiChevronLeft }}</v-icon>
+        </v-btn>
       </v-list-item>
       <v-divider></v-divider>
       <v-list dense nav>
@@ -49,6 +68,7 @@
                       <span class="white--text headline">MO</span>
                     </v-avatar>
                   </v-list-item-avatar>
+
                   <v-list-item-content>
                     <v-list-item-title>Marcelo Oliveira</v-list-item-title>
                   </v-list-item-content>
@@ -113,6 +133,8 @@
     mdiHistory,
     mdiCalendarMonth,
     mdiMenu,
+    mdiChevronLeft,
+    mdiChevronRight
   } from "@mdi/js";
 
   export default {
@@ -171,6 +193,9 @@
         selectedItem: undefined,
         drawer: false,
         menuIcon: mdiMenu,
+        mdiChevronLeft,
+        mdiChevronRight,
+        mini: false
       };
     },
     methods: {
@@ -179,7 +204,7 @@
       },
     },
     computed: {
-      mini() {
+      mobile() {
         return this.$vuetify.breakpoint.mdAndDown;
       },
     },
