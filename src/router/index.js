@@ -9,70 +9,69 @@ const routes = [{
   name: "Home",
   component: Home,
 },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
+{
+  path: "/about",
+  name: "About",
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () =>
     import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  },
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    component: () =>
+},
+{
+  path: "/dashboard",
+  name: "Dashboard",
+  component: () =>
     import(
       /* webpackChunkName: "dashboard" */ "../pages/Dashboard/Dashboard.vue"
     ),
-  },
-  {
-    path: "/dashboardLayout",
-    name: "DashboardLayout",
-    component: () =>
+},
+{
+  path: "/dashboardLayout",
+  name: "DashboardLayout",
+  component: () =>
     import(
       /* webpackChunkName: "dashboardLayout" */ "../pages/Dashboard/DashboardLayout.vue"
     ),
-  },
-  {
-    path: "/dashboardNew",
-    name: "DashboardNew",
-    component: () =>
+},
+{
+  path: "/dashboardNew",
+  name: "DashboardNew",
+  component: () =>
     import(
       /* webpackChunkName: "dashboardNew" */ "../pages/Dashboard/DashboardNew.vue"
     ),
-    children: [{
-      path: "",
-      components: {
-        "dashboard-paciente": () =>
+  children: [{
+    path: "",
+    components: {
+      "dashboard-paciente": () =>
         import(
           /* webpackChunkName: "" */ "../pages/Dashboard/DashboardHome.vue"
         ),
-      },
     },
-
-      {
-        path: "home",
-        name: "Home",
-        components: {
-          "dashboard-paciente": Home,
-        },
-      },
-      {
-        path: "notificacaopaciente",
-        name: "NotificacaoPaciente",
-        components: {
-          "dashboard-paciente": Notificacao,
-        },
-      },
-    ],
   },
   {
-    path: "/login",
-    name: "Login",
-    component: () =>
-    import(/* webpackChunkName: "login" */ "../pages/Login/Login.vue"),
+    path: "home",
+    name: "Home",
+    components: {
+      "dashboard-paciente": Home,
+    },
   },
+  {
+    path: "notificacaopaciente",
+    name: "NotificacaoPaciente",
+    components: {
+      "dashboard-paciente": Notificacao,
+    },
+  },
+  ],
+},
+{
+  path: "/login",
+  name: "Login",
+  component: () =>
+    import(/* webpackChunkName: "login" */ "../pages/Login/Login.vue"),
+},
   // {
   //   path: "/login",
   //   name: "Login",
