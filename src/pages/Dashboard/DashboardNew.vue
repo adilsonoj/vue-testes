@@ -16,7 +16,7 @@
     >
       <v-list-item class="px-2" v-if="!mini">
         <v-btn icon @click.stop="mini = !mini">
-          <v-icon>{{ mdiChevronRight }}</v-icon>
+          <v-icon>{{ mdiChevronDoubleRight }}</v-icon>
         </v-btn>
       </v-list-item>
 
@@ -26,7 +26,7 @@
         </v-list-item-avatar>
         <v-list-item-title>John Leider</v-list-item-title>
         <v-btn icon @click.stop="mini = !mini">
-          <v-icon>{{ mdiChevronLeft }}</v-icon>
+          <v-icon>{{ mdiChevronDoubleLeft }}</v-icon>
         </v-btn>
       </v-list-item>
       <v-divider></v-divider>
@@ -123,8 +123,8 @@ import {
   mdiHistory,
   mdiCalendarMonth,
   mdiMenu,
-  mdiChevronLeft,
-  mdiChevronRight,
+  mdiChevronDoubleLeft,
+  mdiChevronDoubleRight,
 } from "@mdi/js";
 
 export default {
@@ -185,7 +185,8 @@ export default {
       selectedItem: undefined,
       drawer: false,
       menuIcon: mdiMenu,
-      mdiChevronDoubleLeft: mdiChevronDoubleLeft,
+      mdiChevronDoubleLeft,
+      mdiChevronDoubleRight,
       open: false,
     };
   },
