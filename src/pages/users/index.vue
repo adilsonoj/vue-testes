@@ -6,9 +6,12 @@
       :page.sync="page"
       :items-per-page="itemsPerPage"
       :search="search"
+      no-data-text="Nenhum registro encontrado"
+      no-results-text="Nenhum registro encontrado"
       hide-default-footer
       class="elevation-1"
       @page-count="pageCount = $event"
+      :disable-sort="$vuetify.breakpoint.xs"
     >
       <!-- template insert and edit -->
       <template v-slot:top>
@@ -51,18 +54,18 @@
                         label="Telefone"
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12" lg="6" sm="6" md="4">
+                    <v-col cols="12" lg="12" sm="6" md="4">
                       <v-text-field
                         v-model="editedItem.perfil"
                         label="Perfil"
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12" lg="6" sm="6" md="4">
+                    <!-- <v-col cols="12" lg="6" sm="6" md="4">
                       <v-text-field
                         v-model="editedItem.bloqueado"
                         label="Bloqueado"
                       ></v-text-field>
-                    </v-col>
+                    </v-col> -->
                   </v-row>
                 </v-container>
               </v-card-text>
@@ -93,7 +96,7 @@
             </v-card>
           </v-dialog>
         </v-toolbar>
-        <v-toolbar flat>
+        <v-toolbar flat class="mt-5">
           <v-text-field
             v-model="search"
             append-icon="mdi-magnify"
@@ -105,7 +108,8 @@
         </v-toolbar>
       </template>
       <template v-slot:[`item.bloqueado`]="{ item }">
-        <v-simple-checkbox v-model="item.bloqueado"></v-simple-checkbox>
+        <!-- <v-simple-checkbox v-model="item.bloqueado"></v-simple-checkbox> -->
+        <v-switch v-model="item.bloqueado"></v-switch>
       </template>
       <template v-slot:[`item.actions`]="{ item }">
         <!-- <v-btn tile small color="primary"
@@ -126,9 +130,9 @@
           </v-icon></v-btn
         >
       </template>
-      <template v-slot:no-data>
+      <!-- <template v-slot:no-data>
         <v-btn color="primary" @click="initialize"> Reset </v-btn>
-      </template>
+      </template> -->
     </v-data-table>
     <div class="text-center pt-2 pb-5">
       <v-pagination v-model="page" :length="pageCount"></v-pagination>
