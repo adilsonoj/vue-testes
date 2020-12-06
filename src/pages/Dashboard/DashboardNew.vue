@@ -12,8 +12,13 @@
       mini-variant-width="56"
       :permanent="!mobile"
       app
-      :absolute="mobile"
+      absolute
     >
+      <v-list-item class="px-2" v-if="!mini">
+        <v-btn icon @click.stop="mini = !mini">
+          <v-icon>{{ mdiChevronDoubleRight }}</v-icon>
+        </v-btn>
+      </v-list-item>
       <v-list-item class="px-2">
         <v-list-item-avatar>
           <v-img src="../../assets/apple-touch-icon.png"></v-img>
@@ -33,6 +38,7 @@
       <v-list dense nav>
         <v-list-item-group v-model="selectedItem" color="white">
           <Menu @drawer="drawer = !drawer" />
+
           <v-list-item
             v-for="item in items"
             :key="item.title"
@@ -68,6 +74,7 @@
 
 <script>
 import {
+  mdiAccountBox,
   mdiBell,
   mdiClipboardText,
   mdiMedicalBag,
@@ -86,6 +93,7 @@ export default {
   components: {
     Menu,
   },
+
   data() {
     return {
       items: [
@@ -124,25 +132,47 @@ export default {
           icon: mdiCalendarMonth,
         },
       ],
-
+      conta: {
+        title: "Conta",
+        icon: mdiAccountBox,
+        url: "/dashboardNew",
+        items: [
+          {
+            title: "Minha Conta",
+            url: "",
+          },
+          {
+            title: "Alterar Senha",
+            url: "",
+          },
+        ],
+      },
+      menu: false,
       selectedItem: undefined,
       drawer: false,
       menuIcon: mdiMenu,
       mdiChevronDoubleLeft,
       mdiChevronDoubleRight,
       mini: true,
+
+      open: false,
     };
   },
-  methods: {},
-  computed: {
-    mobile() {
-      return this.$vuetify.breakpoint.mdAndDown;
+  methods: {
+    computed: {
+      mobile() {
+        return this.$vuetify.breakpoint.mdAndDown;
+      },
     },
   },
 };
 </script>
 
 <style scoped>
+.active {
+  background-color: white;
+  color: rgb(85, 85, 85);
+}
 .text {
   color: white;
 }
