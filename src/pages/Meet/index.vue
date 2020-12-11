@@ -22,7 +22,7 @@ export default {
         },
         configOverwrite: {
           prejoinPageEnabled: false,
-          enableNoisyMicDetection: false,
+          enableNoisyMicDetection: true,
           enableWelcomePage: false,
           disableDeepLinking: true,
         },
