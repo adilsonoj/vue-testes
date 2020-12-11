@@ -82,7 +82,7 @@ const routes = [
   {
     path: "/meet",
     name: "JitsiMeet",
-    component: () => import(/* webpackChunkName: "meet" */ "../pages/meet/"),
+    component: () => import(/* webpackChunkName: "meet" */ "../pages/Meet/"),
   },
   {
     path: "/upload",
