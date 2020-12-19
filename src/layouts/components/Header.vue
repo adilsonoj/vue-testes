@@ -2,7 +2,7 @@
   <v-app-bar :clipped-left="clipped" fixed app :color="color">
     <v-app-bar-nav-icon @click.stop="drawer" />
     <v-img
-      src="../../assets/logo-cbes-matriz(1).png"
+      src="../../assets/logo.png"
       alt="Vuetify.js"
       max-width="20"
       class="ml-5"
@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      title: "CBES",
+      title: "NOME APP",
       color: "",
     };
   },
