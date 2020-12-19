@@ -25,6 +25,9 @@ export default {
           enableNoisyMicDetection: true,
           enableWelcomePage: false,
           disableDeepLinking: true,
+          p2p: {
+            enabled: false,
+          },
         },
         interfaceConfigOverwrite: {
           SHOW_JITSI_WATERMARK: false,
@@ -46,6 +49,13 @@ export default {
 
       this.$refs.jitsiRef.addEventListener("videoConferenceLeft", () =>
         console.log("fechou a conexao")
+      );
+
+      this.$refs.jitsiRef.addEventListener("cameraError", (erro) =>
+        console.error("Camera Erro", erro)
+      );
+      this.$refs.jitsiRef.addEventListener("micError", (erro) =>
+        console.error("Mic error", erro)
       );
     },
   },
