@@ -25,9 +25,6 @@ export default {
           enableNoisyMicDetection: true,
           enableWelcomePage: false,
           disableDeepLinking: true,
-          p2p: {
-            enabled: false,
-          },
         },
         interfaceConfigOverwrite: {
           SHOW_JITSI_WATERMARK: false,
