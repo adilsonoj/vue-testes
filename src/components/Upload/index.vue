@@ -23,9 +23,9 @@
           Upload
           <v-icon right dark>mdi-cloud-upload</v-icon>
         </v-btn>
-        <v-btn color="primary" fab dark small @click="upload">
+        <!-- <v-btn color="primary" fab dark small @click="upload">
           <v-icon dark>mdi-cloud-upload</v-icon>
-        </v-btn>
+        </v-btn> -->
       </v-col>
     </v-row>
 
