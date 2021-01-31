@@ -35,6 +35,14 @@ export default {
           PROVIDER_NAME: true,
           MOBILE_APP_PROMO: false,
           VIDEO_LAYOUT_FIT: "both",
+          OPTIMAL_BROWSERS: [
+            "chrome",
+            "chromium",
+            "firefox",
+            "nwjs",
+            "electron",
+            "safari",
+          ],
         },
         onload: this.onIFrameLoad,
       };
