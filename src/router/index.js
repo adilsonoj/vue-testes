@@ -91,6 +91,11 @@ const routes = [
       import(/* webpackChunkName: "upload" */ "../pages/upload/"),
   },
   {
+    path: "/slide",
+    name: "slide",
+    component: () => import(/* webpackChunkName: "slide" */ "../pages/slide/slide"),
+  },
+  {
     path: "*",
     component: () =>
       import(/* webpackChunkName: "notfound" */ "../pages/pageNotFound/"),
