@@ -58,6 +58,11 @@ export default {
           title: "Upload",
           to: "/upload",
         },
+        {
+          icon: "mdi-play-box-outline",
+          title: "Slide",
+          to: "/slide",
+        },
       ],
     };
   },
