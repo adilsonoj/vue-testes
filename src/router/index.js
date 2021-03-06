@@ -54,7 +54,7 @@ const routes = [
       },
       {
         path: "home",
-        name: "Home",
+        name: "Homes",
         components: {
           "dashboard-paciente": Home,
         },
@@ -90,6 +90,13 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "upload" */ "../pages/upload/"),
   },
+  {
+    path: "/chat",
+    name: "chat",
+    component: () =>
+      import(/* webpackChunkName: "upload" */ "../pages/chat/chat"),
+  },
+
   {
     path: "*",
     component: () =>
