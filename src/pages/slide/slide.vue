@@ -1,5 +1,10 @@
 <template>
-  <v-card elevation="24" width="360" max-height="600" class="mx-auto">
+  <v-card
+    elevation="24"
+    :max-width="mobile ? 360 : 1080"
+    :max-height="mobile ? 600 : 1800"
+    class="mx-auto"
+  >
     <v-carousel
       :continuous="false"
       :cycle="false"
@@ -39,6 +44,11 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    mobile() {
+      return this.$vuetify.breakpoint.smAndDown;
+    },
   },
 };
 </script>
