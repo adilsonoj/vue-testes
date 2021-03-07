@@ -1,26 +1,25 @@
 <template>
-  <v-card
-    elevation="24"
-    :max-width="mobile ? 360 : 1080"
-    :max-height="mobile ? 600 : 1800"
-    class="mx-auto"
-  >
-    <v-carousel
-      :continuous="false"
-      :cycle="false"
-      :show-arrows="true"
-      hide-delimiter-background
-    >
-      <v-carousel-item
-        v-for="(item, i) in slides"
-        :key="i"
-        reverse-transition="fade-transition"
-        transition="fade-transition"
-        :src="item.src"
-      >
-      </v-carousel-item>
-    </v-carousel>
-  </v-card>
+  <v-row justify="center">
+    <v-dialog v-model="dialog" width="600px">
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn color="primary" dark v-bind="attrs" v-on="on">
+          Open Modal
+        </v-btn>
+      </template>
+      <v-card>
+        <v-carousel
+          :continuous="false"
+          :cycle="false"
+          :show-arrows="true"
+          hide-delimiter-background
+          :height="'100%'"
+        >
+          <v-carousel-item v-for="(item, i) in slides" :key="i" :src="item.src">
+          </v-carousel-item>
+        </v-carousel>
+      </v-card>
+    </v-dialog>
+  </v-row>
 </template>
 <script>
 export default {
