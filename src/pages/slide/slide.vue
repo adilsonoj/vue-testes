@@ -6,7 +6,7 @@
           Open Modal
         </v-btn>
       </template>
-      <v-card>
+      <v-card color="#000">
         <v-carousel
           :continuous="false"
           :cycle="false"
@@ -16,6 +16,9 @@
         >
           <v-carousel-item v-for="(item, i) in slides" :key="i" :src="item.src">
           </v-carousel-item>
+          <v-card-actions>
+            <v-img :src="rodape" class="mb-10"></v-img>
+          </v-card-actions>
         </v-carousel>
       </v-card>
     </v-dialog>
@@ -27,21 +30,28 @@ export default {
     return {
       slides: [
         {
-          src: require("@/assets/tutorial/1.jpeg"),
+          src: require("@/assets/tutorial/tutorial1.png"),
         },
         {
-          src: require("@/assets/tutorial/2.jpeg"),
+          src: require("@/assets/tutorial/tutorial2.png"),
         },
         {
-          src: require("@/assets/tutorial/3.jpeg"),
+          src: require("@/assets/tutorial/tutorial3.png"),
         },
         {
-          src: require("@/assets/tutorial/4.jpeg"),
+          src: require("@/assets/tutorial/tutorial4.png"),
         },
         {
-          src: require("@/assets/tutorial/5.jpeg"),
+          src: require("@/assets/tutorial/tutorial5.png"),
+        },
+        {
+          src: require("@/assets/tutorial/tutorial6.png"),
+        },
+        {
+          src: require("@/assets/tutorial/tutorial7.png"),
         },
       ],
+      rodape: require("@/assets/tutorial/tutorial_title.png"),
     };
   },
   computed: {
