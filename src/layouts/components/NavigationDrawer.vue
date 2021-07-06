@@ -63,6 +63,11 @@ export default {
           title: "Slide",
           to: "/slide",
         },
+        {
+          icon: "mdi-calendar",
+          title: "Calendar",
+          to: "/calendar",
+        },
       ],
     };
   },
