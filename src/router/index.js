@@ -107,6 +107,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "slide" */ "../pages/calendar"),
   },
   {
+    path: "/token",
+    name: "token",
+    component: () => import(/* webpackChunkName: "token" */ "../pages/token"),
+  },
+  {
+    path: "/configure",
+    name: "configure",
+    component: () => import(/* webpackChunkName: "configure" */ "../pages/configure"),
+  },
+  {
     path: "*",
     component: () =>
       import(/* webpackChunkName: "notfound" */ "../pages/pageNotFound/"),
