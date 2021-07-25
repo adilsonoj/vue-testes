@@ -117,6 +117,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "configure" */ "../pages/configure"),
   },
   {
+    path: "/draggable",
+    name: "draggable",
+    component: () => import(/* webpackChunkName: "draggable" */ "../pages/draggable"),
+  },
+  {
     path: "*",
     component: () =>
       import(/* webpackChunkName: "notfound" */ "../pages/pageNotFound/"),
