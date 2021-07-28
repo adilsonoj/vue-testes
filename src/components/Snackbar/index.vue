@@ -1,8 +1,12 @@
 <template>
-  <v-snackbar v-model="openSnack" :timeout="timeout">
+  <v-snackbar v-model="openSnack" :timeout="timeout"
+      
+      right
+      :color="color"
+      >
     {{ text }}
     <template v-slot:action="{ attrs }">
-      <v-btn color="blue" icon v-bind="attrs" @click="$emit('close', false)">
+      <v-btn  icon v-bind="attrs" @click="$emit('close', false)">
         <v-icon small dark>
           mdi-close
         </v-icon>
@@ -17,6 +21,7 @@ export default {
   props: {
     open: { type: Boolean, default: false },
     text: { type: String, default: "" },
+    color: { type: String, default: "success" },
   },
   data() {
     return {

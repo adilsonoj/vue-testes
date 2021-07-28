@@ -122,6 +122,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "draggable" */ "../pages/draggable"),
   },
   {
+    path: "/permissao-acesso",
+    name: "permissao-acesso",
+    component: () => import(/* webpackChunkName: "permissao-acesso" */ "../pages/permissaoAcesso"),
+  },
+  {
     path: "*",
     component: () =>
       import(/* webpackChunkName: "notfound" */ "../pages/pageNotFound/"),

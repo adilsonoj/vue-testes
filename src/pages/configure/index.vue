@@ -51,11 +51,10 @@
               :max="horarioslabel.length == 0 ? 10 : horarioslabel.length-1"
               :disabled="horarioslabel.length == 0"
               :tick-labels="horarioslabel"
-              
               v-model="intervalo"
               @end="rangeslider"
               thumb-label="always"
-              ticks="false"
+              
              
             >
             <template v-slot:thumb-label="{ value }">
@@ -71,6 +70,8 @@
               multiple
               outlined
               dense
+              v-model="intervaloDias"
+              @change="handleChangeIntervaloDias"
             ></v-select>
           </v-col>
           <v-col cols="12" sm="6" md="1">
@@ -99,6 +100,7 @@
               type="date"
               outlined
               dense
+              v-model="recessoInicio"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="6" md="3">
@@ -107,23 +109,7 @@
               type="date"
               outlined
               dense
-            ></v-text-field>
-          </v-col>
-
-          <v-col cols="12" sm="6" md="2">
-            <v-text-field
-              label="Hora Início"
-              type="time"
-              outlined
-              dense
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" sm="6" md="2">
-            <v-text-field
-              label="Hora Fim"
-              type="time"
-              outlined
-              dense
+              v-model="recessoFim"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="6" md="1">
@@ -134,12 +120,11 @@
         </v-row>
 
         <v-row>
-          <v-col cols="12" sm="6" md="3"> </v-col>
-          <v-col cols="12" sm="6" md="3"> </v-col>
+         
           <v-col cols="12" sm="6" md="5" class="pl-10">
-            <h4 class="text">Intervalos cadastrados</h4>
-            <ul v-for="item in intervalos" :key="item">
-              <li>{{ item }}</li>
+            <h4 class="text">Recessos cadastrados</h4>
+            <ul v-for="[ value ] of intervalos.entries()" :key="value">
+              <li>{{ value }}</li>
             </ul>
           </v-col>
         </v-row>
@@ -149,6 +134,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 export default {
   data: () => ({
     items: ["seg", "ter", "qua", "qui"],
@@ -159,7 +145,9 @@ export default {
     duracaoConsulta: 30,
     horaFim: "12:00",
     horaInicio: "08:00",
-    i: 0,
+    intervaloDias: [],
+    recessoInicio: "",
+    recessoFim: "",
   }),
   computed: {
      horarioslabel(){
@@ -175,7 +163,16 @@ export default {
   },
   methods: {
     addIntervalo() {
-      this.intervalos.push("11:00 as 13:00 - seg, ter, qua " + this.i++);
+      let set;
+      if(!(set instanceof Set))
+        set = new Set()
+      if(!this.recessoInicio || !this.recessoFim) return
+      if(moment(this.recessoInicio).isAfter(moment(this.recessoFim), 'day')){
+        alert("periodo inválido")
+        return
+      }
+      set.add(`${this.recessoInicio} a ${this.recessoFim}`);
+      //this.intervalos = uneval([...set])
     },
     replace(value){
        return value && value.replace(".5",":30")
@@ -187,7 +184,9 @@ export default {
 
       })
     },
-   
+    handleChangeIntervaloDias() {
+      console.log(this.intervaloDias)
+    },
     getRangeHorarios(duracaoConsulta, horarioInicio, horarioFinal){
       let h = horarioInicio.split(":")
       let nextH = ""
