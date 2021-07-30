@@ -160,7 +160,9 @@ export default {
       const perfil = { ...item, oi: this.oiSelecionado }
 
       const existe = this.perfisAssociados.find(f => f.oi.concat(f.key.cdNivlAces) === perfil.oi.concat(perfil.key.cdNivlAces))
-      if(existe) return
+      if(existe) {
+        return
+      }
 
 
       this.perfisAssociados.unshift(perfil)
