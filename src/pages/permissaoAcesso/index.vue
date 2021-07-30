@@ -141,7 +141,7 @@ export default {
       perfis: [],
       perfisAssociados: [],
       listaOi: [],
-      payload: {},
+      listaCompletaOi: [],
       snack: { open: false, text: "" }
     };
   },
@@ -155,6 +155,11 @@ export default {
       this.getPessoaPorCpf(val);
     }
   },
+  computed: {
+    findOi(){
+      return this.listaCompletaOi.find(i=>i.oi===this.oiSelecionado)
+    }
+  },
   methods: {
     associaPerfil(item){
       const perfil = { ...item, oi: this.oiSelecionado }
@@ -163,6 +168,27 @@ export default {
       if(existe) {
         return
       }
+
+      let payload = {
+        key: { 
+          nrCpf01: this.pessoa.nrCpfFunc01,
+          nrCpf02: this.pessoa.nrCpfFunc02,
+          nrCpf03: this.pessoa.nrCpfFunc03,
+          idDvCpf: this.pessoa.idDvCpfFunc,
+          cdSupe: this.pessoa.cdSupe,
+          cdDept: this.pessoa.cdDept,
+          cdDivs: this.pessoa.cdDivs,
+          cdScao: this.pessoa.cdSecao,
+          cdSetr: this.pessoa.cdSetr,
+          nivelAcesso: {
+            cdProj: item.cdProj,
+            idMoud: item.idModu,
+            cdNivlAces: item.cdNivlAces,
+          }
+        }
+      }
+
+      console.log(payload)
 
 
       this.perfisAssociados.unshift(perfil)
@@ -236,6 +262,7 @@ export default {
       axios.get(`http://localhost:8082/oi/like?oi=${oi}`)
         .then(response => {
           console.log(response.data);
+          this.listaCompletaOi = response.data
           this.listaOi = response.data.map(e => e.oi)
         })
         .catch(function (error) {
