@@ -9,18 +9,6 @@
             :options="{ group: 'people' }"
             style="min-height: 10px"
           >
-            <!-- <template v-for="item in items">
-              <v-list-tile :key="item.id" avatar>
-                <v-list-tile-avatar>
-                  <img :src="item.avatar">
-                </v-list-tile-avatar>
-                <v-list-tile-content>
-                  <v-list-tile-title v-html="item.title"></v-list-tile-title>
-                  <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </template> -->
-
             <v-list-item v-for="item in items" :key="item.id">
               <v-list-item-avatar>
                 <img :src="item.avatar" />

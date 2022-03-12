@@ -59,6 +59,11 @@ export default {
           to: "/upload",
         },
         {
+          icon: "mdi-cloud-upload",
+          title: "Upload-spring",
+          to: "/upload-spring",
+        },
+        {
           icon: "mdi-play-box-outline",
           title: "Slide",
           to: "/slide",

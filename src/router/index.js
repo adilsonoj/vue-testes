@@ -91,6 +91,18 @@ const routes = [
       import(/* webpackChunkName: "upload" */ "../pages/upload/"),
   },
   {
+    path: "/upload-spring",
+    name: "Upload-spirng",
+    component: () =>
+      import(/* webpackChunkName: "-spirng" */ "../pages/upload/upload.vue"),
+  },
+  {
+    path: "/upload-chave-spring",
+    name: "Upload-chave-spirng",
+    component: () =>
+      import(/* webpackChunkName: "-spirng" */ "../pages/upload/uploadchave.vue"),
+  },
+  {
     path: "/chat",
     name: "chat",
     component: () =>
