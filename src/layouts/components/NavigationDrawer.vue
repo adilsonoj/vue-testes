@@ -73,6 +73,11 @@ export default {
           title: "Calendar",
           to: "/calendar",
         },
+        {
+          icon: "mdi-calendar",
+          title: "Socket",
+          to: "/socket",
+        },
       ],
     };
   },
