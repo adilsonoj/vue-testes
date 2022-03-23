@@ -139,6 +139,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "socket" */ "../pages/socket"),
   },
   {
+    path: "/authApiSecretKey",
+    name: "authApiSecretKey",
+    component: () => import(/* webpackChunkName: "authApiSecretKey" */ "../pages/authApiSecretKey"),
+  },
+  {
     path: "/permissao-acesso",
     name: "permissao-acesso",
     component: () => import(/* webpackChunkName: "permissao-acesso" */ "../pages/permissaoAcesso"),

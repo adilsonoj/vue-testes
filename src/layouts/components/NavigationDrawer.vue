@@ -78,6 +78,11 @@ export default {
           title: "Socket",
           to: "/socket",
         },
+         {
+          icon: "mdi-calendar",
+          title: "authApiSecretKey",
+          to: "/authApiSecretKey",
+        },
       ],
     };
   },
