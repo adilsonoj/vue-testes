@@ -58,6 +58,11 @@ export default {
       console.log(this.currentFile);
       const bodyFormData = new FormData();
       bodyFormData.append("file", this.currentFile);
+      bodyFormData.append(
+        "alias",
+        "leonardo lira de oliveira eireli35443330000136"
+      );
+      bodyFormData.append("senha", "@oliveira09");
       const resp = await axios({
         method: "POST",
         data: bodyFormData,

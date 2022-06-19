@@ -149,6 +149,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "permissao-acesso" */ "../pages/permissaoAcesso"),
   },
   {
+    path: "/glass",
+    name: "glass",
+    component: () => import(/* webpackChunkName: "glass" */ "../pages/glassefecty"),
+  },
+  {
     path: "*",
     component: () =>
       import(/* webpackChunkName: "notfound" */ "../pages/pageNotFound/"),
