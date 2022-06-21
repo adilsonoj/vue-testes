@@ -88,6 +88,11 @@ export default {
           title: "Glass",
           to: "/glass",
         },
+        {
+          icon: "mdi-calendar",
+          title: "heatmap",
+          to: "/heatmap",
+        },
       ],
     };
   },

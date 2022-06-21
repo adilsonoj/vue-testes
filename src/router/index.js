@@ -154,6 +154,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "glass" */ "../pages/glassefecty"),
   },
   {
+    path: "/heatmap",
+    name: "heatmap",
+    component: () => import(/* webpackChunkName: "heatmap" */ "../pages/heatmap"),
+  },
+  {
     path: "*",
     component: () =>
       import(/* webpackChunkName: "notfound" */ "../pages/pageNotFound/"),
